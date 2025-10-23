@@ -1,4 +1,4 @@
-# restaurant-service (Flask + SQLAlchemy)
+# Restaurant-service (Flask + SQLAlchemy)
 
 Serves restaurant catalog (names, slugs, cuisines, ratings, logo S3 keys).
 
@@ -14,14 +14,16 @@ pip install -r requirements.txt
 ```
 
 # Set env, e.g.:
+```bash
 export DB_HOST=127.0.0.1
 export DB_PORT=5432
 export DB_NAME=foodapp
 export DB_USER=postgres
 export DB_PASS=postgres
-
+```
+```bash
 python app.py
-
+```
 ## API
 
 - `GET /healthz` - Health check endpoint
