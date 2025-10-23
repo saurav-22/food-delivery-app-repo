@@ -1,4 +1,4 @@
-# menu-service (Node.js + Express + pg)
+# Menu-service (Node.js + Express + pg)
 
 Serves menu items per restaurant. Stores `image_key` like `restaurants/<slug>/menu-1.jpg`.
 
@@ -21,10 +21,10 @@ export DB_USER=postgres
 export DB_PASS=postgres
 ```
 
-# ensure schema
+## Ensure schema
 `npm run initdb`
 
-# start service
+## Start service
 `npm run dev` or `npm start`
 
 ## API
