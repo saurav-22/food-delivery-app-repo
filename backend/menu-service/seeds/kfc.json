@@ -1,0 +1,7 @@
+[
+  { "name": "Hot & Crispy Legs", "description": "Signature crisp", "price_paise": 22900, "image_key": "restaurants/kfc/menu-1.jpg", "is_available": true },
+  { "name": "Hot & Crispy Meal", "description": "Meal combo", "price_paise": 27900, "image_key": "restaurants/kfc/menu-2.jpg", "is_available": true },
+  { "name": "Hot & Crispy Wings", "description": "Spicy wings", "price_paise": 19900, "image_key": "restaurants/kfc/menu-3.jpg", "is_available": true },
+  { "name": "Chicken Strips", "description": "Tender strips", "price_paise": 18900, "image_key": "restaurants/kfc/menu-4.jpg", "is_available": true },
+  { "name": "Chicken Popcorn", "description": "Bite-sized treats", "price_paise": 17900, "image_key": "restaurants/kfc/menu-5.jpg", "is_available": true }
+]

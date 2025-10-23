@@ -1,0 +1,7 @@
+[
+  { "name": "Chicken Maharaja Mac", "description": "Double-decker", "price_paise": 24900, "image_key": "restaurants/mcd/menu-1.jpg", "is_available": true },
+  { "name": "McSpicy Chicken", "description": "Hot & tasty", "price_paise": 19900, "image_key": "restaurants/mcd/menu-2.jpg", "is_available": true },
+  { "name": "French Fries", "description": "Crispy", "price_paise": 7900, "image_key": "restaurants/mcd/menu-3.jpg", "is_available": true },
+  { "name": "Happy Meal", "description": "Kid's favorite", "price_paise": 22900, "image_key": "restaurants/mcd/menu-4.jpg", "is_available": true },
+  { "name": "McAloo Tikki Burger", "description": "Veg classic", "price_paise": 14900, "image_key": "restaurants/mcd/menu-5.jpg", "is_available": true }
+]

@@ -1,0 +1,7 @@
+[
+  { "name": "Grilled Chicken Burger", "description": "Juicy grilled patty", "price_paise": 18900, "image_key": "restaurants/burger-king/menu-1.jpg", "is_available": true },
+  { "name": "Classic French Fries", "description": "Crispy & golden", "price_paise": 7900, "image_key": "restaurants/burger-king/menu-2.jpg", "is_available": true },
+  { "name": "Burger Meal", "description": "Burger + Fries + Drink", "price_paise": 24900, "image_key": "restaurants/burger-king/menu-3.jpg", "is_available": true },
+  { "name": "Veg Burger", "description": "Paneer & veggie patty", "price_paise": 15900, "image_key": "restaurants/burger-king/menu-4.jpg", "is_available": true },
+  { "name": "Veg Whopper Meal", "description": "Whopper + sides", "price_paise": 27900, "image_key": "restaurants/burger-king/menu-5.jpg", "is_available": true }
+]

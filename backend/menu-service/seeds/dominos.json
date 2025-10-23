@@ -1,0 +1,7 @@
+[
+  { "name": "Cheese Burst Pizza", "description": "Cheesy delight", "price_paise": 29900, "image_key": "restaurants/dominos/menu-1.jpg", "is_available": true },
+  { "name": "Chicken Pizza", "description": "Loaded with chicken", "price_paise": 32900, "image_key": "restaurants/dominos/menu-2.jpg", "is_available": true },
+  { "name": "Mexican Green Pizza", "description": "Spicy & tangy", "price_paise": 27900, "image_key": "restaurants/dominos/menu-3.jpg", "is_available": true },
+  { "name": "Veggie Paradise", "description": "Garden-fresh toppings", "price_paise": 25900, "image_key": "restaurants/dominos/menu-4.jpg", "is_available": true },
+  { "name": "Chicken Pepperoni", "description": "All-time favorite", "price_paise": 33900, "image_key": "restaurants/dominos/menu-5.jpg", "is_available": true }
+]

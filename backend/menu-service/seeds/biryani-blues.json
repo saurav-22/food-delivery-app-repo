@@ -1,0 +1,7 @@
+[
+  { "name": "Boneless Chicken Biryani", "description": "Aromatic basmati rice with tender chicken", "price_paise": 25900, "image_key": "restaurants/biryani-blues/menu-1.jpg", "is_available": true },
+  { "name": "Chicken Biryani (Bone)", "description": "Classic Hyderabadi style", "price_paise": 23900, "image_key": "restaurants/biryani-blues/menu-2.jpg", "is_available": true },
+  { "name": "Mutton Biryani", "description": "Slow-cooked mutton", "price_paise": 32900, "image_key": "restaurants/biryani-blues/menu-3.jpg", "is_available": true },
+  { "name": "Paneer Biryani", "description": "Veggie delight", "price_paise": 21900, "image_key": "restaurants/biryani-blues/menu-4.jpg", "is_available": true },
+  { "name": "Tandoori Chicken Biryani", "description": "Smoky flavors", "price_paise": 27900, "image_key": "restaurants/biryani-blues/menu-5.jpg", "is_available": true }
+]

@@ -1,0 +1,7 @@
+[
+  { "name": "Cheese Burst Pizza", "description": "Extra cheese", "price_paise": 29900, "image_key": "restaurants/pizza-hut/menu-1.jpg", "is_available": true },
+  { "name": "Veg Combo Pizza", "description": "Combo delight", "price_paise": 26900, "image_key": "restaurants/pizza-hut/menu-2.jpg", "is_available": true },
+  { "name": "Tandoori Paneer Pizza", "description": "Smoky paneer", "price_paise": 28900, "image_key": "restaurants/pizza-hut/menu-3.jpg", "is_available": true },
+  { "name": "Chicken Pepperoni", "description": "Classic", "price_paise": 33900, "image_key": "restaurants/pizza-hut/menu-4.jpg", "is_available": true },
+  { "name": "Spicy Veg Pizza", "description": "Hot & tasty", "price_paise": 25900, "image_key": "restaurants/pizza-hut/menu-5.jpg", "is_available": true }
+]
