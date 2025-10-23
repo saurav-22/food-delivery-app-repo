@@ -1,4 +1,4 @@
-# user-service (Spring Boot + JPA + PostgreSQL)
+# User-service (Spring Boot + JPA + PostgreSQL)
 
 Manages users and a single default address per user.
 
@@ -14,15 +14,17 @@ Manages users and a single default address per user.
 ```bash
 # from user-service/
 ./mvnw spring-boot:run   # if wrapper later
+
 # OR standard maven:
 mvn spring-boot:run
+
 # or as jar:
 mvn -DskipTests package
 java -jar target/user-service-0.0.1.jar
 ```
 
 ## API (flat JSON)
-- `GET /healthz
+- `GET /healthz`
 - `POST /users` -> `{name,email?,phone?}`
 - `GET /users/{id}`
 - `PUT /users/{id}` -> partial update
