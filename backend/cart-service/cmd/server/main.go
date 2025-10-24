@@ -10,7 +10,7 @@ import (
 func main() {
 	port := os.Getenv("SERVICE_PORT")
 	if port == "" {
-		port = "8084" // agreed port
+		port = "8084"
 	}
 
 	r := gin.Default()
