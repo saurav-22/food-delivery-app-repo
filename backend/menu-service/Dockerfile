@@ -1,14 +1,14 @@
-FROM node:20-alpine AS base
+FROM node:20-alpine
 
-ENV NODE_ENV=production
 WORKDIR /app
 
-# Install deps
-COPY package.json ./
+# Install dependencies first for caching
+COPY package.json .
 RUN npm install --only=production
 
-# Copy source
+# Copy source code
 COPY . .
 
 EXPOSE 8082
+
 CMD ["node", "index.js"]
