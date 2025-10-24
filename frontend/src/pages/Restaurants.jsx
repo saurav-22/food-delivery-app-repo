@@ -11,7 +11,8 @@ export default function Restaurants() {
   const fallback = [
     { name: 'KFC', slug: 'kfc', cuisine: 'Fried Chicken', rating: 4.3, logo_key: 'restaurants/kfc/logo.jpg' },
     { name: 'Domino\'s', slug: 'dominos', cuisine: 'Pizza', rating: 4.2, logo_key: 'restaurants/dominos/logo.jpg' },
-    { name: 'Burger King', slug: 'burger-king', cuisine: 'Burgers', rating: 4.1, logo_key: 'restaurants/burger-king/logo.jpg' }
+    { name: 'Burger King', slug: 'burger-king', cuisine: 'Burgers', rating: 4.1, logo_key: 'restaurants/burger-king/logo.jpg' },
+    { name: 'Biryani Blues', slug: 'biryani-blues', cuisine: 'Biryani', rating: 4.1, logo_key: 'restaurants/biryani-blues/logo.jpg' }
   ];
 
   useEffect(() => {
