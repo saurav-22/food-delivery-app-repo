@@ -9,15 +9,20 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     zip \
+    libzip-dev \
+    pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo pdo_pgsql zip
+RUN docker-php-ext-install pdo pdo_pgsql
+
+# Install zip extension via PECL (alternative method)
+RUN pecl install zip && docker-php-ext-enable zip
 
 WORKDIR /var/www/html
 
-# Copy only composer.json first for better caching
-COPY composer.json ./
+# Copy project files
+COPY . .
 
 # Install Composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -26,9 +31,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 # Install Composer dependencies
 RUN composer install --no-dev --optimize-autoloader --prefer-dist
-
-# Copy the rest of the application
-COPY . .
 
 # Allow .htaccess overrides
 RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
