@@ -4,7 +4,7 @@ FROM golang:1.23-alpine AS build
 WORKDIR /app
 
 # Copy mod files first for caching
-COPY go.mod go.sum ./
+COPY go.mod ./
 
 # Download dependencies
 RUN go mod download
