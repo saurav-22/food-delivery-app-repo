@@ -19,6 +19,11 @@ pipeline {
 
   stages {
 
+    stage('Clean Workspace') {
+            steps {
+                cleanWs()  // This cleans the workspace
+            }
+    }
     stage('Checkout') {
       when { branch 'main' }
       steps { checkout scm }
