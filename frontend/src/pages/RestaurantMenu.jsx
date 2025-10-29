@@ -20,13 +20,14 @@ export default function RestaurantMenu() {
           setInfo(r.data);
           setMenu(m.data);
         }
-      } catch {
+      } catch (error) {
+        console.error('API error:', error);
         // fallback until APIs ready
-        setInfo({ name: slug.toUpperCase(), slug, cuisine: '—', rating: 4.0, logo_key: `restaurants/${slug}/logo.jpg` });
+        /* setInfo({ name: slug.toUpperCase(), slug, cuisine: '—', rating: 4.0, logo_key: `restaurants/${slug}/logo.jpg` });
         setMenu([
           { id: 1, name: 'Sample Item 1', description: 'Tasty!', price_paise: 19900, image_key: `restaurants/${slug}/menu-1.jpg` },
           { id: 2, name: 'Sample Item 2', description: 'Yum!', price_paise: 24900, image_key: `restaurants/${slug}/menu-2.jpg` }
-        ]);
+        ]); */
       }
     })();
     return () => (cancelled = true);

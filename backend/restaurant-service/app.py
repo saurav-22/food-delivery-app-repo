@@ -4,8 +4,12 @@ from sqlalchemy.exc import IntegrityError
 from db import Base, engine, SessionLocal
 from models import Restaurant
 from config import SERVICE_PORT
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False,
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
 
 @app.before_request
 def init_db():
