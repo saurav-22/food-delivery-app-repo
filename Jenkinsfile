@@ -9,7 +9,7 @@ pipeline {
     AWS_CREDS_ID   = "aws-creds"                  // AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY
     ARGO_TOKEN_ID  = "argocd-token"               // ArgoCD API token stored in Jenkins
 
-    ARGO_SERVER    = "https://3.110.212.118:8085"   // will update after argocd setup
+    ARGO_SERVER    = "3.110.212.118:8085"   // will update after argocd setup
     ARGO_APP_NAME  = "food-delivery-app"
   }
 
