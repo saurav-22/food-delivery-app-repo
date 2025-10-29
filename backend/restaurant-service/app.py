@@ -7,7 +7,7 @@ from config import SERVICE_PORT
 
 app = Flask(__name__)
 
-@app.before_first_request
+@app.before_request
 def init_db():
     # Create tables if not present (idempotent).
     Base.metadata.create_all(bind=engine)
