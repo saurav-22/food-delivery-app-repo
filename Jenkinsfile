@@ -9,7 +9,7 @@ pipeline {
     AWS_CREDS_ID   = "aws-creds"                  // AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY
     ARGO_TOKEN_ID  = "argocd-token"               // ArgoCD API token stored in Jenkins
 
-    ARGO_SERVER    = "https://your-argocd-server-url"   // will update after argocd setup
+    ARGO_SERVER    = "https://3.110.212.118:8085"   // will update after argocd setup
     ARGO_APP_NAME  = "food-delivery-app"
   }
 
@@ -19,11 +19,6 @@ pipeline {
 
   stages {
 
-    stage('Clean Workspace') {
-            steps {
-                cleanWs()  // This cleans the workspace
-            }
-    }
     stage('Checkout') {
       when { branch 'main' }
       steps { checkout scm }
@@ -82,6 +77,9 @@ pipeline {
   }
 
   post {
+    always {
+      cleanWs()  // ← Move clean here to run AFTER build
+    }
     success { echo "CI/CD completed successfully." }
     failure { echo "CI/CD failed. Check logs." }
   }
