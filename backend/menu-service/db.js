@@ -5,7 +5,8 @@ const {
   DB_PORT = '5432',
   DB_NAME = 'foodapp',
   DB_USER = 'postgres',
-  DB_PASS = 'postgres'
+  DB_PASS = 'postgres',
+  DB_SSLMODE = 'require'
 } = process.env;
 
 export const pool = new pg.Pool({
