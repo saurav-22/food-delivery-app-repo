@@ -3,7 +3,6 @@ package cart
 import (
 	"context"
 	"errors"
-	"time"
 
 	"github.com/jackc/pgx/v5"
 	"cart-service/internal/db"
