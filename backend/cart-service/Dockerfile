@@ -24,6 +24,9 @@ FROM alpine:3.19
 WORKDIR /app
 COPY --from=build /app/cart-service .
 
+# Copy the migrate.sql file
+COPY --from=build /app/internal/db/migrate.sql ./internal/db/migrate.sql
+
 EXPOSE 8084
 RUN apk add --no-cache curl
 
