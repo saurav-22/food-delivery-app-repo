@@ -37,10 +37,10 @@ This project demonstrates an end-to-end cloud native deployment of a food-delive
 
 - Frontend: React (Vite + Tailwind) hosted on S3 and distributed via CloudFront (private origin)
 - Backend microservices (deployed on EKS):
-  - `restaurant-service` (Python) — port 8081
-  - `menu-service` (NodeJs)       — port 8082
-  - `cart-service` (Go)       — port 8084
-  - `order-service` (PHP)     — port 80
+  - `restaurant-service` (Python) - port 8081
+  - `menu-service` (NodeJs)       - port 8082
+  - `cart-service` (Go)       - port 8084
+  - `order-service` (PHP)     - port 80
 - RDS (PostgreSQL) for persistent data
 - ECR for storing container images
 - ALB Ingress Controller for API routing to services
@@ -49,12 +49,12 @@ This project demonstrates an end-to-end cloud native deployment of a food-delive
 ## Repository layout
 
 - `app-repo/`
-  - `frontend/` — React app (Vite + Tailwind)
-  - `backend/` — microservices folders (restaurant-service, menu-service, cart-service, order-service)
+  - `frontend/` - React app (Vite + Tailwind)
+  - `backend/` - microservices folders (restaurant-service, menu-service, cart-service, order-service)
 - `infra-repo/`
-  - `helm-chart/` — Helm templates and `values.yaml`
-  - `argocd-apps` — ArgoCD app manifests
-  - `eks-cluster.yaml` — `eksctl` cluster definition
+  - `helm-chart/` - Helm templates and `values.yaml`
+  - `argocd-apps` - ArgoCD app manifests
+  - `eks-cluster.yaml` - `eksctl` cluster definition
 
 ## Prerequisites
 
@@ -79,7 +79,7 @@ Ensure you have the following AWS resources and permissions:
 
 ## Installation & deploy (high level)
 
-Below are the minimal steps to deploy the project into AWS (high level). The aim is to be compact — follow your organizational standards for production deployments (security, IaC review, secrets handling).
+Below are the minimal steps to deploy the project into AWS (high level). The aim is to be compact and simple. So follow your organizational standards for production deployments (security, IaC review, secrets handling).
 
 ### 1. Build & push backend images
 
@@ -123,7 +123,7 @@ Notes:
 
 ### 3. Deploy infra (Helm / ArgoCD / EKS)
 
-Option A — Helm (manual/CI-triggered):
+Option A - Helm (manual/CI-triggered):
 
 1. Update `values.yaml` for `image.repository` and `image.tag` per service.
 2. Apply Helm chart to target namespace(s):
@@ -132,7 +132,7 @@ Option A — Helm (manual/CI-triggered):
 helm upgrade --install food-delivery ./infra-repo/helm-chart -n food-delivery --create-namespace --values ./infra-repo/helm-chart/values.yaml
 ```
 
-Option B — ArgoCD (GitOps):
+Option B - ArgoCD (GitOps):
 
 - Push updated Helm `values.yaml` (or image tags) to `infra-repo` in Git.
 - ArgoCD will detect changes and sync the EKS workloads automatically if configured.
@@ -158,10 +158,10 @@ ArgoCD is used as the GitOps operator to sync `infra-repo` into the cluster when
 
 The primary tables used by the services:
 
-- `restaurant_restaurants` — id, name, slug, cuisine, rating, logo_key, address_json
-- `menu_items` — id, restaurant_slug, name, description, price_paise, image_key
-- `cart_items` — id, user_id, restaurant_slug, item_id, quantity
-- `orders` — id, user_id, total_price, created_at
+- `restaurant_restaurants` - id, name, slug, cuisine, rating, logo_key, address_json
+- `menu_items` - id, restaurant_slug, name, description, price_paise, image_key
+- `cart_items` - id, user_id, restaurant_slug, item_id, quantity
+- `orders` - id, user_id, total_price, created_at
 
 Note: The schema is intentionally compact for demo purposes. Adjust indexes, FK constraints, and types for production.
 
