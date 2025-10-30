@@ -3,6 +3,7 @@
 A microservices-based food delivery demo platform (frontend + backend services) targeting AWS (EKS, ECR, RDS, S3, CloudFront). This README documents the project structure, architecture, minimal install/deploy steps, infrastructure notes, CI/CD flow, database schema, secrets handling, scaling, and troubleshooting.
 
 Purpose note: this project demonstrates cost-optimized EKS deployments by combining EC2 `Spot Instances` with `On‑Demand` worker nodes. Kubernetes autoscaling (HPA + Cluster Autoscaler) keeps pods available and replaces Spot capacity when instances are reclaimed. This repository is a demo and not production‑hardened. So don't forget apply production security practices before using it in production.
+
 ---
 
 ## Table of Contents
@@ -234,4 +235,4 @@ kubectl describe pod <pod-name> -n food-delivery
 
 ###
 
-Connect with me on [LinkedIn](https://www.linkedin.com/in/sauravqa/) — happy to answer questions or demo the deployment.
+Connect with me on [LinkedIn](https://www.linkedin.com/in/sauravqa/) - happy to answer questions or demo the deployment.
