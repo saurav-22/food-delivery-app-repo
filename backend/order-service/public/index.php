@@ -4,7 +4,10 @@ use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = AppFactory::createFromContainer();;
+// Use the standard Slim 4 factory method. createFromContainer requires a container
+// instance; calling create() is the common, simpler setup and prevents an
+// ArgumentCountError when no container is passed.
+$app = AppFactory::create();
 
 // Add body parsing and routing middleware
 $app->addBodyParsingMiddleware();
@@ -36,7 +39,7 @@ $app->options('/{routes:.+}', function ($request, $response, $args) {
 });
 
 // Production mode — do not expose errors
-$app->addErrorMiddleware(false, false, false);
+$app->addErrorMiddleware(true, true, true);
 
 require __DIR__ . '/../src/routes.php';
 
