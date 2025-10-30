@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api/client.js';
 
-const CART_BASE = import.meta.env.VITE_CART_BASE_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8084';
-const ORDER_BASE = import.meta.env.VITE_ORDER_BASE_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8085';
 const DEFAULT_USER_ID = parseInt(import.meta.env.VITE_DEFAULT_USER_ID || '1', 10);
 
 export default function Cart() {
@@ -12,7 +10,7 @@ export default function Cart() {
   const fetchCart = async () => {
     setLoading(true);
     try {
-      const res = await api.get(`${CART_BASE}/cart/${DEFAULT_USER_ID}`);
+  const res = await api.get(`/cart/${DEFAULT_USER_ID}`);
       setCart(res.data);
     } catch (err) {
       console.error('fetch cart failed', err);
@@ -27,7 +25,7 @@ export default function Cart() {
   const updateQty = async (item, qty) => {
     if (qty <= 0) return;
     try {
-      await api.put(`${CART_BASE}/cart/${DEFAULT_USER_ID}/items/${item.id}`, { qty });
+  await api.put(`/cart/${DEFAULT_USER_ID}/items/${item.id}`, { qty });
       // optimistic refresh
       await fetchCart();
     } catch (err) {
@@ -44,7 +42,7 @@ export default function Cart() {
     try {
       // minimal payload — requires a valid address_id and payment_id; use 1 for demo
       const payload = { user_id: DEFAULT_USER_ID, address_id: 1, payment_id: 1 };
-      const res = await api.post(`${ORDER_BASE}/orders`, payload);
+  const res = await api.post(`/orders`, payload);
       alert(`Order placed: ${res.data.id}`);
       // refresh cart (order-service clears cart)
       await fetchCart();

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api/client.js';
 
-const ORDER_BASE = import.meta.env.VITE_ORDER_BASE_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8085';
 const DEFAULT_USER_ID = parseInt(import.meta.env.VITE_DEFAULT_USER_ID || '1', 10);
 
 export default function Orders() {
@@ -10,7 +9,7 @@ export default function Orders() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await api.get(`${ORDER_BASE}/orders/${DEFAULT_USER_ID}`);
+  const res = await api.get(`/orders/${DEFAULT_USER_ID}`);
         setOrders(res.data || []);
       } catch (err) {
         console.error('fetch orders failed', err);

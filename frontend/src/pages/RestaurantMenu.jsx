@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../api/client.js';
 
-// Backend endpoints (can be configured via Vite env vars)
-const CART_BASE = import.meta.env.VITE_CART_BASE_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8084';
 const DEFAULT_USER_ID = parseInt(import.meta.env.VITE_DEFAULT_USER_ID || '1', 10);
 
 export default function RestaurantMenu() {
@@ -44,7 +42,7 @@ export default function RestaurantMenu() {
         price_paise: item.price_paise,
         qty: 1
       };
-      await api.post(`${CART_BASE}/cart/${DEFAULT_USER_ID}/items`, payload);
+  await api.post(`/cart/${DEFAULT_USER_ID}/items`, payload);
       // simple feedback — keep UI minimal for showcase
       alert(`Added ${item.name} to cart`);
     } catch (err) {
