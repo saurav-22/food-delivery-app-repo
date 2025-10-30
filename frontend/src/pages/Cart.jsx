@@ -11,7 +11,25 @@ export default function Cart() {
     setLoading(true);
     try {
   const res = await api.get(`/cart/${DEFAULT_USER_ID}`);
-      setCart(res.data);
+  console.debug('RAW /cart response', res);
+  const d = res.data;
+      // normalize response shapes: expected { cart_id, restaurant_slug, items: [], subtotal_paise }
+      if (Array.isArray(d)) {
+        // some backends may return items array directly
+        setCart({ cart_id: null, restaurant_slug: null, items: d, subtotal_paise: 0 });
+      } else if (d && typeof d === 'object') {
+        // common shapes
+        if (Array.isArray(d.items)) {
+          setCart(d);
+        } else if (Array.isArray(d.items || d.cart_items || d.data)) {
+          setCart({ cart_id: d.cart_id ?? null, restaurant_slug: d.restaurant_slug ?? null, items: d.items || d.cart_items || d.data, subtotal_paise: d.subtotal_paise || 0 });
+        } else {
+          // unknown shape -> defensively set empty
+          setCart({ cart_id: d.cart_id ?? null, restaurant_slug: d.restaurant_slug ?? null, items: [], subtotal_paise: d.subtotal_paise || 0 });
+        }
+      } else {
+        setCart({ cart_id: null, restaurant_slug: null, items: [], subtotal_paise: 0 });
+      }
     } catch (err) {
       console.error('fetch cart failed', err);
       setCart({ cart_id: null, restaurant_slug: null, items: [], subtotal_paise: 0 });
@@ -59,8 +77,8 @@ export default function Cart() {
       {loading && <div>Loading…</div>}
       {!loading && cart && (
         <div>
-          {cart.cart_id === null && <div>Your cart is empty.</div>}
-          {cart.items && cart.items.length > 0 && (
+          {(!cart.items || cart.items.length === 0) && <div>Your cart is empty.</div>}
+          {Array.isArray(cart.items) && cart.items.length > 0 && (
             <div>
               <div className="space-y-4">
                 {cart.items.map((it) => (

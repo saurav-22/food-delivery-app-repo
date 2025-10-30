@@ -10,7 +10,17 @@ export default function Orders() {
     (async () => {
       try {
   const res = await api.get(`/orders/${DEFAULT_USER_ID}`);
-        setOrders(res.data || []);
+  console.debug('RAW /orders response', res);
+  const d = res.data;
+        if (Array.isArray(d)) {
+          setOrders(d);
+        } else if (d && typeof d === 'object') {
+          // accept { orders: [...] } or object map
+          if (Array.isArray(d.orders)) setOrders(d.orders);
+          else setOrders(Object.values(d));
+        } else {
+          setOrders([]);
+        }
       } catch (err) {
         console.error('fetch orders failed', err);
       }

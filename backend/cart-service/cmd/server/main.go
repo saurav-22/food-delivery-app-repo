@@ -34,9 +34,9 @@ func main() {
 	r := httpdelivery.SetupRouter(svc)
 
 	// fallback health (router already sets one but keep a simple check)
-	r.GET("/healthz", func(c *gin.Context) {
+	/* r.GET("/healthz", func(c *gin.Context) {
 		c.JSON(200, gin.H{"ok": true})
-	})
+	}) */
 
 	log.Println("cart-service listening on :" + port)
 	if err := r.Run(":" + port); err != nil {

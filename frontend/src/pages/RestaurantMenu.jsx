@@ -42,7 +42,8 @@ export default function RestaurantMenu() {
         price_paise: item.price_paise,
         qty: 1
       };
-  await api.post(`/cart/${DEFAULT_USER_ID}/items`, payload);
+      const res = await api.post(`/cart/${DEFAULT_USER_ID}/items`, payload);
+      console.debug('POST /cart response', res);
       // simple feedback — keep UI minimal for showcase
       alert(`Added ${item.name} to cart`);
     } catch (err) {
