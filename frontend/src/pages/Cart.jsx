@@ -60,8 +60,22 @@ export default function Cart() {
     try {
       // minimal payload — requires a valid address_id and payment_id; use 1 for demo
       const payload = { user_id: DEFAULT_USER_ID, address_id: 1, payment_id: 1 };
-  const res = await api.post(`/orders`, payload);
-      alert(`Order placed: ${res.data.id}`);
+      const res = await api.post(`/orders`, payload);
+      // handle JSON vs HTML responses defensively
+      if (res && res.status >= 200 && res.status < 300) {
+        if (res.data && typeof res.data === 'object' && ('id' in res.data)) {
+          alert(`Order placed: ${res.data.id}`);
+        } else if (res.data && typeof res.data === 'string') {
+          // server returned HTML or plain text — show a friendly error
+          console.warn('Checkout returned non-JSON response', res.data);
+          alert('Order placed (response not JSON). Check backend response.');
+        } else {
+          alert('Order placed');
+        }
+      } else {
+        const msg = res?.data?.error || 'Failed to place order';
+        alert(msg);
+      }
       // refresh cart (order-service clears cart)
       await fetchCart();
     } catch (err) {

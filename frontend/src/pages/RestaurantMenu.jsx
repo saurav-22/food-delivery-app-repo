@@ -38,8 +38,9 @@ export default function RestaurantMenu() {
     try {
       const payload = {
         restaurant_slug: slug,
-        menu_item_id: item.id,
-        price_paise: item.price_paise,
+        // ensure numeric fields are numbers (server expects ints)
+        menu_item_id: Number(item.id),
+        price_paise: Number(item.price_paise),
         qty: 1
       };
       const res = await api.post(`/cart/${DEFAULT_USER_ID}/items`, payload);
