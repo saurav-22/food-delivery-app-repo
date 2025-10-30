@@ -66,9 +66,20 @@ export default function Cart() {
         if (res.data && typeof res.data === 'object' && ('id' in res.data)) {
           alert(`Order placed: ${res.data.id}`);
         } else if (res.data && typeof res.data === 'string') {
-          // server returned HTML or plain text — show a friendly error
+          // server returned HTML or plain text — try to recover by querying orders list
           console.warn('Checkout returned non-JSON response', res.data);
-          alert('Order placed (response not JSON). Check backend response.');
+          try {
+            const ores = await api.get(`/orders/${DEFAULT_USER_ID}`);
+            const orders = Array.isArray(ores.data) ? ores.data : (ores.data && Array.isArray(ores.data.orders) ? ores.data.orders : []);
+            if (orders.length > 0) {
+              alert(`Order placed: ${orders[0].id}`);
+            } else {
+              alert('Order placed (could not read order id).');
+            }
+          } catch (e) {
+            console.warn('Failed to fetch orders after checkout', e);
+            alert('Order placed (response not JSON). Check backend response.');
+          }
         } else {
           alert('Order placed');
         }
