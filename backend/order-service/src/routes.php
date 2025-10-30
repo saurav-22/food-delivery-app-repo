@@ -5,6 +5,13 @@ use App\OrderController;
 
 return function (App $app) {
 
+    // Health check for ALB / readiness probes
+    $app->get('/healthz', function ($request, $response, $args) {
+        $payload = ['status' => 'ok'];
+        $response->getBody()->write(json_encode($payload));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
     $app->post('/orders', [OrderController::class, 'create']);
     // Handle GET /orders (no user_id) so frontend calls without user_id don't 405
     $app->get('/orders', function ($request, $response, $args) {
