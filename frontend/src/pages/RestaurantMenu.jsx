@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../api/client.js';
-import { getCdnUrl } from '../api/placeholder.js';
 
 export default function RestaurantMenu() {
   const { slug } = useParams();
@@ -44,7 +43,7 @@ export default function RestaurantMenu() {
       {info && (
         <div className="mt-3 mb-6 flex items-center gap-4">
           <img
-            src={getCdnUrl(info.logo_key)}
+            src={info.logo_key}
             alt={`${info.name} logo`}
             className="h-16 w-16 object-cover rounded-lg"
           />
@@ -58,7 +57,7 @@ export default function RestaurantMenu() {
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {menu.map((m) => (
           <div key={m.id} className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 overflow-hidden">
-            <img src={getCdnUrl(m.image_key)} alt={m.name} className="h-44 w-full object-cover" />
+            <img src={m.image_key} alt={m.name} className="h-44 w-full object-cover" />
             <div className="p-4">
               <div className="font-semibold">{m.name}</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">{m.description ?? ''}</div>

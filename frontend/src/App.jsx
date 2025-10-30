@@ -36,7 +36,7 @@ export default function App() {
           <Route path="/" element={<Restaurants />} />
           
           {/* Show restaurant menu when URL has restaurant ID */}
-          <Route path="/restaurant/:id" element={<RestaurantMenu />} />
+          <Route path="/restaurants/:slug" element={<RestaurantMenu />} />
           
           {/* Show cart page */}
           <Route path="/cart" element={<Cart />} />

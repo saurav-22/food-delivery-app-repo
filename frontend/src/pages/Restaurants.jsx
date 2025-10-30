@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/client.js';
-import { getCdnUrl } from '../api/placeholder.js';
 
 export default function Restaurants() {
   const [items, setItems] = useState([]);
@@ -37,12 +36,12 @@ export default function Restaurants() {
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((r) => (
         <Link
-          to={`/restaurant/${r.slug}`}
+          to={`/restaurants/${r.slug}`}
           key={r.slug}
           className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 p-4 hover:shadow"
         >
           <img
-            src={getCdnUrl(r.logo_key)}
+            src={r.logo_key}
             alt={`${r.name} logo`}
             className="h-24 w-24 object-cover rounded-xl mb-3"
           />
