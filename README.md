@@ -234,4 +234,4 @@ kubectl describe pod <pod-name> -n food-delivery
 
 ###
 
-Connect with me on LinkedIn: https://www.linkedin.com/in/sauravqa/ — happy to answer questions or demo the deployment.
+Connect with me on [LinkedIn](https://www.linkedin.com/in/sauravqa/) — happy to answer questions or demo the deployment.
