@@ -8,7 +8,7 @@ import (
 	httpdelivery "cart-service/internal/http"
 	"cart-service/internal/db"
 
-	"github.com/gin-gonic/gin"
+	//"github.com/gin-gonic/gin"
 )
 
 func main() {
