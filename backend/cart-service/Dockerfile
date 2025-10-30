@@ -25,4 +25,10 @@ WORKDIR /app
 COPY --from=build /app/cart-service .
 
 EXPOSE 8084
+RUN apk add --no-cache curl
+
+# Healthcheck for container orchestrators
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+	CMD curl -f http://localhost:8084/healthz || exit 1
+
 CMD ["./cart-service"]

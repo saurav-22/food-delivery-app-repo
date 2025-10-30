@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     libzip-dev \
     pkg-config \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
@@ -38,6 +39,12 @@ RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 # Set proper permissions for Apache
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
+
+# Default CART service url (can be overridden by CI/K8s)
+ENV CART_SERVICE_URL=http://cart-service:8084
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/healthz || exit 1
 
 EXPOSE 80
 CMD ["apache2-foreground"]

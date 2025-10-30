@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import api from '../api/client.js';
 
+// Backend endpoints (can be configured via Vite env vars)
+const CART_BASE = import.meta.env.VITE_CART_BASE_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8084';
+const DEFAULT_USER_ID = parseInt(import.meta.env.VITE_DEFAULT_USER_ID || '1', 10);
+
 export default function RestaurantMenu() {
   const { slug } = useParams();
   const [menu, setMenu] = useState([]);
@@ -32,9 +36,21 @@ export default function RestaurantMenu() {
     return () => (cancelled = true);
   }, [slug]);
 
-  const addToCart = async (itemId) => {
-    // Will wire up after cart-service exists
-    alert(`Added item ${itemId} to cart (mock).`);
+  const addToCart = async (item) => {
+    try {
+      const payload = {
+        restaurant_slug: slug,
+        menu_item_id: item.id,
+        price_paise: item.price_paise,
+        qty: 1
+      };
+      await api.post(`${CART_BASE}/cart/${DEFAULT_USER_ID}/items`, payload);
+      // simple feedback — keep UI minimal for showcase
+      alert(`Added ${item.name} to cart`);
+    } catch (err) {
+      console.error('Add to cart failed', err);
+      alert('Failed to add to cart');
+    }
   };
 
   return (
@@ -63,7 +79,7 @@ export default function RestaurantMenu() {
               <div className="text-sm text-gray-600 dark:text-gray-400">{m.description ?? ''}</div>
               <div className="mt-2 font-semibold">₹ {(m.price_paise / 100).toFixed(2)}</div>
               <button
-                onClick={() => addToCart(m.id)}
+                onClick={() => addToCart(m)}
                 className="mt-3 w-full rounded-lg border border-gray-300 dark:border-gray-700 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 Add to cart
